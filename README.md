@@ -1,2 +1,2 @@
 # homework-of-algorithm
-this is all homework when I study this lecture
+This is all homework when I learned this lecture
