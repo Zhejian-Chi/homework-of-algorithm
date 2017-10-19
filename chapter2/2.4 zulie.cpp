@@ -13,7 +13,7 @@ int isOnly(int a[], int x, int index, int n)
 }
 
 int findOnly(int a[], int l, int r)
-{
+{	//find a number only appears once and retuens its index, else return -1
 	for(int i=l;i<=r;i++)
 		if(isOnly(a, a[i], i, r-l+1)==1)
 			return i;
@@ -22,14 +22,14 @@ int findOnly(int a[], int l, int r)
 }
 
 void depart(int a[], int l, int r)
-{
+{	//we use the theory of divide-and-conquer
 	if(!isGood)
 		return;
 	if(l>=r)
 		return;
 	if(r-l==1)
 	{	if(a[r]==a[l])
-			isGood=false;
+			isGood=false;  
 		return;
 	}
 	int index=findOnly(a,l,r);
@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
 	int t, n;
 	cin>>t;
 	int t1=t;
-	int *c = new int[t1];
+	int *c = new int[t1]; //record state('1' means 'Good', '0' means 'Bad')of import array
 
 	while(t--){
         cin>>n;
@@ -73,13 +73,13 @@ int main(int argc, char* argv[])
 			c[t]=0;
 		}
 
-		isGood = true;
+		isGood = true; //reset for next array's judgement
 		delete []a;
 		a=NULL;
     }
 
-	for(int i = t1-1; i>=0; i--)
-   	{
+	for(int i = t1-1; i>=0; i--)  
+   	{	//while we store the state from top to buttom, so we must have a same sequence when printing it
    		if(c[i]==1)
    			cout<<"Good"<<endl;
 		else
